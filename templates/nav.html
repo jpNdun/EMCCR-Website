@@ -1,0 +1,119 @@
+<style>
+nav{
+    display: flex;
+    padding: auto;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+}
+
+nav img{
+    width: 60px;
+    height: 60px;
+    opacity: 0.3;
+    animation: rotation 8s infinite linear;
+
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+.nav-links{
+    flex: 1;
+    text-align: right;
+}
+
+.nav-links ul li{
+    list-style: none;
+    padding: 8px 12px;
+    position: relative;
+    display: inline-block;
+
+}
+
+.nav-links ul li a{
+    color:white;
+    text-decoration: none;
+    font-size: 13px;
+    font-family: sans-serif;
+    align-items: end;
+}
+
+.nav-links ul li::after{
+    content: '';
+    width: 0%;
+    height: 2px;
+    background: #f44336;
+    display: block;
+    margin: auto;
+    transition: 0.5s;
+
+}
+.nav-links ul li:hover::after{
+    width: 100%;
+    
+}
+nav .fa{
+        display: none;
+    }
+    @media(max-width: 700px){
+        .text-box h1{
+            font-size: 20px;
+        }
+        .nav-links ul li{
+            display: block;
+        }
+        .nav-links{
+            position: absolute;
+            background: #f44336;
+            height: 100vh;
+            width: 200px;
+            top: 0;
+            right: -200px;
+            text-align: left;
+            z-index: 2;
+            transition: 1s;
+        }
+        nav .fa{
+            display: block;
+            color: #fff;
+            margin: 10px;
+            cursor: pointer;
+            font-size: 22px;
+        }
+        .nav-links ul{
+            padding: 30px;
+        }
+    }
+
+</style>
+
+<nav class="nav shadow-sm justify-content-end fixed-top bg-transparent">
+   <!-- <img src="/static/logo.png" alt="logo" width="30" height="24">-->
+    <div class="nav-links" id="navLinks">
+        <i class="fa fa-times" onclick="hideMenu()"></i>
+        <ul>
+            <li><a class="nav-item nav-link" href="home">Home</a></li>
+            <li><a class="nav-item nav-link" href="about">About</a></li>
+            <li><a href="">Contact</a></li>
+            <li><a href="">Join Us</a></li>
+        </ul>
+    </div>
+    <i class="fa fa-bars" onclick="showMenu()"></i>
+</nav>
+
+<!------------JAVASCRIPT FOR TOGGLE MENU-------------->
+<script>
+    var navLinks = document.getElementById("navLinks")
+    function showMenu(){
+        navLinks.style.right = "0";
+    }
+    function hideMenu(){
+        navLinks.style.right = "-200px";
+    }
+</script>
